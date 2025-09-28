@@ -1,4 +1,4 @@
-l<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -102,6 +102,46 @@ l<!DOCTYPE html>
             background: #d63447;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(231, 111, 81, 0.4);
+        }
+
+        /* Loading Spinner */
+        .loading {
+            display: none;
+            margin-left: 10px;
+        }
+
+        .spinner {
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #e76f51;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #27ae60;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            display: none;
+        }
+
+        .error-message {
+            background: #e74c3c;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            display: none;
         }
 
         /* Sections */
@@ -260,10 +300,18 @@ l<!DOCTYPE html>
             font-size: 1rem;
             font-weight: bold;
             transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .submit-btn:hover {
             background: #d63447;
+        }
+
+        .submit-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
         }
 
         .contact-info {
@@ -336,7 +384,7 @@ l<!DOCTYPE html>
             <div class="hero-content">
                 <h1>Fresh Oranges, Premium Turmeric & Haldi</h1>
                 <p>At Wanfex Exports, we specialize in delivering farm-fresh Nagpur Oranges, high-quality Turmeric, and premium Turmeric Powder to global markets</p>
-                <p>Sourced directly from India’s fertile farms, our products are 100% natural, hygienically processed, and packed to international export standards. We ensure consistent quality, timely delivery, and competitive pricing to build long-term partnerships with importers worldwide </p>
+                <p>Sourced directly from India's fertile farms, our products are 100% natural, hygienically processed, and packed to international export standards. We ensure consistent quality, timely delivery, and competitive pricing to build long-term partnerships with importers worldwide </p>
                 <p>Partner with Wanfex – Your Trusted Agricultural Exporter from India</p>
                 <a href="#contact" class="cta-button">Get Quote Today</a>
             </div>
@@ -349,12 +397,12 @@ l<!DOCTYPE html>
             <h2 class="section-title">About Our Business</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Founded with a vision to showcase India’s agricultural excellence, Wanfex Exports is a growing name in the fresh fruits and spices export industry. Our focus is on quality, transparency, and reliability</p>
+                    <p>Founded with a vision to showcase India's agricultural excellence, Wanfex Exports is a growing name in the fresh fruits and spices export industry. Our focus is on quality, transparency, and reliability</p>
                     <p>Direct from Farms – Products are sourced from trusted farmers.</p>
                     <p>Strict Quality Control – Every batch is tested for purity, taste, and freshness.</p>
                     <p>Custom Packaging – Export packaging options to suit international standards.</p>
                     <p>Global Reach – Supplying to Middle East, Europe, and Asia (expandable markets).</p>
-                    <p>Our mission is simple – to deliver India’s authentic taste and quality to the world.</p>
+                    <p>Our mission is simple – to deliver India's authentic taste and quality to the world.</p>
                 </div>
                 <div class="about-stats">
                     <div class="stat-card">
@@ -397,12 +445,12 @@ l<!DOCTYPE html>
                 </div>
                 <div class="product-card">
                     <div class="product-icon">🌿</div>
-                    <h3>Premium Turmeric (Haldi)</h3>
-                    <p>High-curcumin content turmeric powder and whole turmeric, sourced from organic farms and processed with care.</p>
+                    <h3>Turmeric & Turmeric Powder (Haldi)</h3>
+                    <p>High-curcumin content turmeric and turmeric powder, sourced from organic farms and processed with care.</p>
                     <ul class="product-features">
                         <li>High curcumin content (3-5%)</li>
                         <li>Organic certification available</li>
-                        <li>Powder & whole form</li>
+                        <li>Whole turmeric & powder form</li>
                         <li>Custom packaging options</li>
                         <li>Lab-tested purity</li>
                     </ul>
@@ -417,33 +465,58 @@ l<!DOCTYPE html>
             <h2 class="section-title">Get In Touch</h2>
             <div class="contact-content">
                 <div class="contact-form">
+                    <div class="success-message" id="successMessage">
+                        ✅ Thank you! Your inquiry has been submitted successfully. We'll get back to you within 24 hours.
+                    </div>
+                    <div class="error-message" id="errorMessage">
+                        ❌ Sorry, there was an error submitting your form. Please try again or contact us directly.
+                    </div>
                     <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">Full Name</label>
+                            <label for="name">Full Name *</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="wanfexexports@gmail.com">Email</label>
-                            <input type="wanfexexports@gmail.com" id="wanfexexports@gmail.com" name="wanfexexports@gmail.com" required>
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
                             <label for="company">Company Name</label>
                             <input type="text" id="company" name="company">
                         </div>
                         <div class="form-group">
-                            <label for="product">Product Interest</label>
-                            <select id="product" name="product" style="width: 100%; padding: 12px; border: none; border-radius: 5px; font-size: 1rem; background: rgba(255,255,255,0.9);">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <input type="text" id="country" name="country" placeholder="Which country are you importing to?">
+                        </div>
+                        <div class="form-group">
+                            <label for="product">Product Interest *</label>
+                            <select id="product" name="product" required style="width: 100%; padding: 12px; border: none; border-radius: 5px; font-size: 1rem; background: rgba(255,255,255,0.9);">
                                 <option value="">Select Product</option>
-                                <option value="oranges">Fresh Oranges</option>
-                                <option value="turmeric">Premium Turmeric</option>
-                                <option value="both">Both Products</option>
+                                <option value="Fresh Oranges">Fresh Oranges</option>
+                                <option value="Turmeric">Turmeric</option>
+                                <option value="Turmeric Powder (Haldi)">Turmeric Powder (Haldi)</option>
+                                <option value="Multiple Products">Multiple Products</option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" placeholder="Please include quantity requirements, destination country, and any specific requirements..."></textarea>
+                            <label for="quantity">Estimated Quantity</label>
+                            <input type="text" id="quantity" name="quantity" placeholder="e.g., 10 tons, 500 kg">
                         </div>
-                        <button type="submit" class="submit-btn">Send Inquiry</button>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" placeholder="Please include quantity requirements, destination country, timeline, and any specific requirements..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            Send Inquiry
+                            <div class="loading" id="loading">
+                                <div class="spinner"></div>
+                            </div>
+                        </button>
                     </form>
                 </div>
                 <div class="contact-info">
@@ -451,21 +524,23 @@ l<!DOCTYPE html>
                     <div class="contact-item">
                         <span>📧</span>
                         <div>
-                            <strong>wanfexexports@gmail.com:</strong><br>
+                            <strong>Email:</strong><br>
+                            wanfexexports@gmail.com
                         </div>
                     </div>
                     <div class="contact-item">
                         <span>📱</span>
                         <div>
-                            <strong>+91-9970183589:</strong><br>
+                            <strong>Phone:</strong><br>
+                            +91-9970183589
                         </div>
                     </div>
                     <div class="contact-item">
                         <span>📍</span>
                         <div>
-                            <strong>Address :</strong><br>
-                            710 United Athashri Pune <br>
-                            City, State - 411047<br>
+                            <strong>Address:</strong><br>
+                            710 United Athashri<br>
+                            Pune, Maharashtra - 411047<br>
                             India
                         </div>
                     </div>
@@ -490,6 +565,9 @@ l<!DOCTYPE html>
     </footer>
 
     <script>
+        // Google Apps Script Web App URL - YOU NEED TO REPLACE THIS WITH YOUR ACTUAL URL
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwfKWwv4RPrpZYeV0PvRJImlHkjVHl66zGJDfNJH_BGoa9dxhbzNJcfJor9AYreOB4b/exec';
+        
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -504,26 +582,71 @@ l<!DOCTYPE html>
             });
         });
 
-        // Form submission handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        // Form submission handler with Google Sheets integration
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loading');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Hide previous messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            loading.style.display = 'inline-block';
             
             // Get form data
             const formData = new FormData(this);
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                company: formData.get('company') || 'Not provided',
+                phone: formData.get('phone') || 'Not provided',
+                country: formData.get('country') || 'Not provided',
+                product: formData.get('product'),
+                quantity: formData.get('quantity') || 'Not specified',
+                message: formData.get('message'),
+                timestamp: new Date().toISOString(),
+                source: 'Website Contact Form'
+            };
             
-            // Simple validation
-            if (!data.name || !data.wanfexexports@gmail.com || !data.message) {
-                alert('Please fill in all required fields.');
+            // Basic validation
+            if (!data.name || !data.email || !data.product || !data.message) {
+                errorMessage.textContent = '❌ Please fill in all required fields (marked with *)';
+                errorMessage.style.display = 'block';
+                submitBtn.disabled = false;
+                loading.style.display = 'none';
                 return;
             }
-            
-            // Show success message (you can replace this with actual form submission)
-            alert('Thank you for your inquiry! We will get back to you within 24 hours.');
-            this.reset();
+
+            try {
+                // Send to Google Sheets
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                // Since we're using 'no-cors', we can't read the response
+                // But if we reach here without an error, it likely succeeded
+                successMessage.style.display = 'block';
+                this.reset(); // Clear the form
+                
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.style.display = 'block';
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                loading.style.display = 'none';
+            }
         });
 
         // Add header background on scroll
@@ -537,6 +660,4 @@ l<!DOCTYPE html>
         });
     </script>
 </body>
-
 </html>
-

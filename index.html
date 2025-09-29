@@ -15,6 +15,7 @@
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
+            overflow-x: hidden;
         }
 
         .container {
@@ -33,6 +34,7 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
 
         nav {
@@ -44,64 +46,189 @@
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
+            animation: fadeInLeft 1s ease;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
             gap: 2rem;
+            animation: fadeInRight 1s ease;
         }
 
         .nav-links a {
             color: white;
             text-decoration: none;
-            transition: opacity 0.3s;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .nav-links a:hover {
-            opacity: 0.8;
+            transform: translateY(-2px);
         }
 
-        /* Hero Section */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section with Image Background */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f4a261" width="1200" height="600"/><circle fill="%23e76f51" cx="200" cy="150" r="80"/><circle fill="%23e76f51" cx="400" cy="200" r="60"/><circle fill="%23e76f51" cx="800" cy="100" r="70"/><circle fill="%23e76f51" cx="1000" cy="180" r="90"/><rect fill="%23e9c46a" x="300" y="400" width="600" height="20" rx="10"/></svg>');
             height: 100vh;
             display: flex;
             align-items: center;
             text-align: center;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23ff6b35;stop-opacity:1" /><stop offset="100%" style="stop-color:%23f4a261;stop-opacity:1" /></linearGradient></defs><rect fill="url(%23grad1)" width="1200" height="600"/><circle fill="%23ffffff" fill-opacity="0.1" cx="200" cy="150" r="80"/><circle fill="%23ffffff" fill-opacity="0.1" cx="400" cy="200" r="60"/><circle fill="%23ffffff" fill-opacity="0.1" cx="800" cy="100" r="70"/><circle fill="%23ffffff" fill-opacity="0.1" cx="1000" cy="180" r="90"/><rect fill="%23ffffff" fill-opacity="0.1" x="100" y="500" width="200" height="30" rx="15"/><rect fill="%23ffffff" fill-opacity="0.1" x="400" y="450" width="150" height="25" rx="12"/><rect fill="%23ffffff" fill-opacity="0.1" x="800" y="480" width="180" height="20" rx="10"/></svg>');
             background-size: cover;
             background-position: center;
+            animation: slowZoom 20s infinite alternate;
+        }
+
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease 0.5s both;
         }
 
         .hero-content h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: slideInDown 1s ease 0.7s both;
         }
 
         .hero-content p {
             font-size: 1.3rem;
             margin-bottom: 2rem;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-button {
             display: inline-block;
-            background: #e76f51;
+            background: linear-gradient(45deg, #e76f51, #f4a261);
             color: white;
             padding: 15px 30px;
             text-decoration: none;
-            border-radius: 25px;
+            border-radius: 50px;
             font-weight: bold;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(231, 111, 81, 0.3);
+            animation: pulse 2s infinite;
         }
 
         .cta-button:hover {
-            background: #d63447;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(231, 111, 81, 0.4);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(231, 111, 81, 0.4);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 25px;
+            right: 25px;
+            background: #25d366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: bounceIn 1s ease 2s both;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #333;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
         /* Loading Spinner */
@@ -144,9 +271,55 @@
             display: none;
         }
 
+        /* Captcha Styles */
+        .captcha-container {
+            background: rgba(255,255,255,0.9);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .captcha-question {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .captcha-input {
+            width: 80px !important;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .captcha-refresh {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .captcha-refresh:hover {
+            background: #2980b9;
+        }
+
         /* Sections */
         section {
             padding: 80px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        section.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .section-title {
@@ -154,11 +327,22 @@
             font-size: 2.5rem;
             margin-bottom: 3rem;
             color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #e76f51, #f4a261);
+            display: block;
+            margin: 20px auto 0;
+            border-radius: 2px;
         }
 
         /* About Section */
         .about {
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
         }
 
         .about-content {
@@ -183,17 +367,31 @@
             background: white;
             padding: 2rem;
             text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .stat-card.animate {
+            transform: translateY(0);
         }
 
         .stat-number {
             font-size: 2.5rem;
             font-weight: bold;
             color: #e76f51;
+            background: linear-gradient(45deg, #e76f51, #f4a261);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Products Section */
+        /* Products Section with Images */
         .products {
             background: white;
         }
@@ -206,27 +404,64 @@
         }
 
         .product-card {
-            background: linear-gradient(145deg, #fff, #f0f0f0);
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-15px) rotateY(5deg);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(231,111,81,0.8), rgba(244,162,97,0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover .product-image::after {
+            opacity: 1;
+        }
+
+        .product-card-content {
+            padding: 2rem;
         }
 
         .product-icon {
-            font-size: 4rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
+            display: block;
         }
 
         .product-card h3 {
             font-size: 1.8rem;
             margin-bottom: 1rem;
             color: #2c3e50;
+        }
+
+        .product-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
 
         .product-features {
@@ -237,6 +472,7 @@
         .product-features li {
             padding: 0.5rem 0;
             color: #666;
+            transition: color 0.3s ease;
         }
 
         .product-features li::before {
@@ -244,6 +480,73 @@
             color: #27ae60;
             font-weight: bold;
             margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .product-card:hover .product-features li {
+            color: #333;
+        }
+
+        .product-cta {
+            display: inline-block;
+            background: linear-gradient(45deg, #e76f51, #f4a261);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .product-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 111, 81, 0.3);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0,0,0,0.5), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
         }
 
         /* Contact Section */
@@ -261,8 +564,9 @@
         .contact-form {
             background: rgba(255,255,255,0.1);
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: 15px;
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .form-group {
@@ -276,13 +580,23 @@
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
-            padding: 12px;
+            padding: 15px;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             font-size: 1rem;
             background: rgba(255,255,255,0.9);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .form-group textarea {
@@ -291,27 +605,29 @@
         }
 
         .submit-btn {
-            background: #e76f51;
+            background: linear-gradient(45deg, #e76f51, #f4a261);
             color: white;
-            padding: 12px 30px;
+            padding: 15px 40px;
             border: none;
-            border-radius: 25px;
+            border-radius: 50px;
             cursor: pointer;
             font-size: 1rem;
             font-weight: bold;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .submit-btn:hover {
-            background: #d63447;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(231, 111, 81, 0.4);
         }
 
         .submit-btn:disabled {
             background: #95a5a6;
             cursor: not-allowed;
+            transform: none;
         }
 
         .contact-info {
@@ -323,11 +639,26 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
         }
 
-        .contact-item i {
+        .contact-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(10px);
+        }
+
+        .contact-item-icon {
             font-size: 1.5rem;
-            color: #e76f51;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #e76f51, #f4a261);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* Footer */
@@ -335,7 +666,29 @@
             background: #1a252f;
             color: white;
             text-align: center;
-            padding: 2rem 0;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #e76f51;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #e76f51;
         }
 
         /* Responsive */
@@ -358,9 +711,33 @@
                 grid-template-columns: 1fr;
             }
 
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
             .contact-info {
                 padding-left: 0;
             }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -373,51 +750,59 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#products">Products</a></li>
+                <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919970183589?text=Hi%20Wanfex%20Exports!%20I%27m%20interested%20in%20your%20products.%20Can%20you%20provide%20more%20details?" class="whatsapp-float" target="_blank">
+        <span class="whatsapp-tooltip">Chat with us on WhatsApp</span>
+        📱
+    </a>
+
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="hero-bg"></div>
         <div class="container">
             <div class="hero-content">
                 <h1>Fresh Oranges, Premium Turmeric & Haldi</h1>
                 <p>At Wanfex Exports, we specialize in delivering farm-fresh Nagpur Oranges, high-quality Turmeric, and premium Turmeric Powder to global markets</p>
-                <p>Sourced directly from India's fertile farms, our products are 100% natural, hygienically processed, and packed to international export standards. We ensure consistent quality, timely delivery, and competitive pricing to build long-term partnerships with importers worldwide </p>
-                <p>Partner with Wanfex – Your Trusted Agricultural Exporter from India</p>
+                <p>Sourced directly from India's fertile farms, our products are 100% natural, hygienically processed, and packed to international export standards. We ensure consistent quality, timely delivery, and competitive pricing to build long-term partnerships with importers worldwide</p>
+                <p><strong>Partner with Wanfex – Your Trusted Agricultural Exporter from India</strong></p>
                 <a href="#contact" class="cta-button">Get Quote Today</a>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" class="about fade-in">
         <div class="container">
             <h2 class="section-title">About Our Business</h2>
             <div class="about-content">
                 <div class="about-text">
                     <p>Founded with a vision to showcase India's agricultural excellence, Wanfex Exports is a growing name in the fresh fruits and spices export industry. Our focus is on quality, transparency, and reliability</p>
-                    <p>Direct from Farms – Products are sourced from trusted farmers.</p>
-                    <p>Strict Quality Control – Every batch is tested for purity, taste, and freshness.</p>
-                    <p>Custom Packaging – Export packaging options to suit international standards.</p>
-                    <p>Global Reach – Supplying to Middle East, Europe, and Asia (expandable markets).</p>
-                    <p>Our mission is simple – to deliver India's authentic taste and quality to the world.</p>
+                    <p><strong>Direct from Farms</strong> – Products are sourced from trusted farmers.</p>
+                    <p><strong>Strict Quality Control</strong> – Every batch is tested for purity, taste, and freshness.</p>
+                    <p><strong>Custom Packaging</strong> – Export packaging options to suit international standards.</p>
+                    <p><strong>Global Reach</strong> – Supplying to Middle East, Europe, and Asia (expandable markets).</p>
+                    <p><em>Our mission is simple – to deliver India's authentic taste and quality to the world.</em></p>
                 </div>
                 <div class="about-stats">
-                    <div class="stat-card">
+                    <div class="stat-card fade-in">
                         <div class="stat-number">100+</div>
                         <p>Tons Exported</p>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card fade-in">
                         <div class="stat-number">25+</div>
                         <p>Countries Served</p>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card fade-in">
                         <div class="stat-number">100%</div>
                         <p>Quality Assured</p>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card fade-in">
                         <div class="stat-number">24/7</div>
                         <p>Customer Support</p>
                     </div>
@@ -426,43 +811,62 @@
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section id="products" class="products">
+    <!-- Products Section with Images -->
+    <section id="products" class="products fade-in">
         <div class="container">
             <h2 class="section-title">Our Premium Products</h2>
             <div class="products-grid">
                 <div class="product-card">
-                    <div class="product-icon">🍊</div>
-                    <h3>Fresh Oranges</h3>
-                    <p>Premium quality oranges, handpicked from the finest orchards. Rich in Vitamin C and bursting with natural sweetness.</p>
-                    <ul class="product-features">
-                        <li>Grade A quality selection</li>
-                        <li>Proper cold chain maintained</li>
-                        <li>Extended shelf life</li>
-                        <li>Bulk packaging available</li>
-                        <li>Year-round availability</li>
-                    </ul>
+                    <div class="product-image" style="background: linear-gradient(45deg, #ff6b35, #f4a261); display: flex; align-items: center; justify-content: center; font-size: 4rem;">🍊</div>
+                    <div class="product-card-content">
+                        <h3>Fresh Oranges</h3>
+                        <p>Premium quality oranges, handpicked from the finest Nagpur orchards. Rich in Vitamin C and bursting with natural sweetness.</p>
+                        <ul class="product-features">
+                            <li>Grade A quality selection</li>
+                            <li>Proper cold chain maintained</li>
+                            <li>Extended shelf life</li>
+                            <li>Bulk packaging available</li>
+                            <li>Year-round availability</li>
+                        </ul>
+                        <a href="https://wa.me/919970183589?text=Hi!%20I%27m%20interested%20in%20Fresh%20Oranges.%20Can%20you%20provide%20pricing%20and%20availability?" class="product-cta" target="_blank">Get Quote on WhatsApp</a>
+                    </div>
                 </div>
                 <div class="product-card">
-                    <div class="product-icon">🌿</div>
-                    <h3>Turmeric & Turmeric Powder (Haldi)</h3>
-                    <p>High-curcumin content turmeric and turmeric powder, sourced from organic farms and processed with care.</p>
-                    <ul class="product-features">
-                        <li>High curcumin content (3-5%)</li>
-                        <li>Organic certification available</li>
-                        <li>Whole turmeric & powder form</li>
-                        <li>Custom packaging options</li>
-                        <li>Lab-tested purity</li>
-                    </ul>
+                    <div class="product-image" style="background: linear-gradient(45deg, #e76f51, #f4a261); display: flex; align-items: center; justify-content: center; font-size: 4rem;">🌿</div>
+                    <div class="product-card-content">
+                        <h3>Turmeric & Turmeric Powder (Haldi)</h3>
+                        <p>High-curcumin content turmeric and turmeric powder, sourced from organic farms and processed with care.</p>
+                        <ul class="product-features">
+                            <li>High curcumin content (3-5%)</li>
+                            <li>Organic certification available</li>
+                            <li>Whole turmeric & powder form</li>
+                            <li>Custom packaging options</li>
+                            <li>Lab-tested purity</li>
+                        </ul>
+                        <a href="https://wa.me/919970183589?text=Hi!%20I%27m%20interested%20in%20Turmeric%20products.%20Can%20you%20share%20details%20about%20pricing%20and%20specifications?" class="product-cta" target="_blank">Get Quote on WhatsApp</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery fade-in">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <h2 class="section-title" style="color: white;">Our Products Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" style="background: linear-gradient(45deg, #ff6b35, #f4a261); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">🍊<br><span style="font-size: 1rem;">Fresh Oranges</span></div>
+                <div class="gallery-item" style="background: linear-gradient(45deg, #e76f51, #d4af37); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold; flex-direction: column;">🌿<br><span style="font-size: 1rem;">Turmeric</span></div>
+                <div class="gallery-item" style="background: linear-gradient(45deg, #f4a261, #e9c46a); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold; flex-direction: column;">✨<br><span style="font-size: 1rem;">Premium Quality</span></div>
+                <div class="gallery-item" style="background: linear-gradient(45deg, #2a9d8f, #264653); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold; flex-direction: column;">📦<br><span style="font-size: 1rem;">Export Ready</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact fade-in">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Get In Touch</h2>
             <div class="contact-content">
                 <div class="contact-form">
                     <div class="success-message" id="successMessage">
@@ -494,7 +898,7 @@
                         </div>
                         <div class="form-group">
                             <label for="product">Product Interest *</label>
-                            <select id="product" name="product" required style="width: 100%; padding: 12px; border: none; border-radius: 5px; font-size: 1rem; background: rgba(255,255,255,0.9);">
+                            <select id="product" name="product" required>
                                 <option value="">Select Product</option>
                                 <option value="Fresh Oranges">Fresh Oranges</option>
                                 <option value="Turmeric">Turmeric</option>
@@ -511,6 +915,15 @@
                             <label for="message">Message *</label>
                             <textarea id="message" name="message" placeholder="Please include quantity requirements, destination country, timeline, and any specific requirements..." required></textarea>
                         </div>
+                        
+                        <!-- Simple Captcha -->
+                        <div class="captcha-container">
+                            <span class="captcha-question" id="captchaQuestion">5 + 3 = ?</span>
+                            <input type="number" id="captchaAnswer" class="captcha-input" placeholder="?" required>
+                            <button type="button" class="captcha-refresh" onclick="generateCaptcha()">🔄 New</button>
+                            <span style="font-size: 0.9rem; color: #666;">Please solve to verify you're human</span>
+                        </div>
+                        
                         <button type="submit" class="submit-btn" id="submitBtn">
                             Send Inquiry
                             <div class="loading" id="loading">
@@ -522,21 +935,28 @@
                 <div class="contact-info">
                     <h3>Contact Information</h3>
                     <div class="contact-item">
-                        <span>📧</span>
+                        <div class="contact-item-icon">📧</div>
                         <div>
                             <strong>Email:</strong><br>
                             wanfexexports@gmail.com
                         </div>
                     </div>
                     <div class="contact-item">
-                        <span>📱</span>
+                        <div class="contact-item-icon">📱</div>
                         <div>
                             <strong>Phone:</strong><br>
                             +91-9970183589
                         </div>
                     </div>
                     <div class="contact-item">
-                        <span>📍</span>
+                        <div class="contact-item-icon">💬</div>
+                        <div>
+                            <strong>WhatsApp:</strong><br>
+                            <a href="https://wa.me/919970183589" style="color: #25d366; text-decoration: none;">Click to Chat</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
                         <div>
                             <strong>Address:</strong><br>
                             710 United Athashri<br>
@@ -545,7 +965,7 @@
                         </div>
                     </div>
                     <div class="contact-item">
-                        <span>🌐</span>
+                        <div class="contact-item-icon">🌐</div>
                         <div>
                             <strong>Export Markets:</strong><br>
                             Middle East, Europe, Asia,<br>
@@ -560,13 +980,85 @@
     <!-- Footer -->
     <footer>
         <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Wanfex Exports</h3>
+                    <p>Your trusted partner for premium agricultural exports from India. Quality assured, globally delivered.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Our Products</h3>
+                    <p><a href="#products">Fresh Oranges</a></p>
+                    <p><a href="#products">Turmeric</a></p>
+                    <p><a href="#products">Turmeric Powder</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#about">About Us</a></p>
+                    <p><a href="#gallery">Gallery</a></p>
+                    <p><a href="#contact">Contact</a></p>
+                    <p><a href="https://wa.me/919970183589">WhatsApp</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Export Markets</h3>
+                    <p>Middle East</p>
+                    <p>Europe</p>
+                    <p>Asia</p>
+                    <p>North America</p>
+                </div>
+            </div>
+            <hr style="border: 1px solid #34495e; margin: 2rem 0;">
             <p>&copy; 2024 Wanfex Exports. All rights reserved. | Fresh Oranges & Premium Turmeric Worldwide</p>
         </div>
     </footer>
 
     <script>
         // Google Apps Script Web App URL - YOU NEED TO REPLACE THIS WITH YOUR ACTUAL URL
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzdJXISrCOVGmXAyPbm0k_5aOd15H_pdQZFfN0MhpQLjoWkySvNSO9sPre0E5cIPBUo/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec';
+        
+        // Captcha variables
+        let captchaAnswer = 0;
+        
+        // Generate simple math captcha
+        function generateCaptcha() {
+            const num1 = Math.floor(Math.random() * 10) + 1;
+            const num2 = Math.floor(Math.random() * 10) + 1;
+            captchaAnswer = num1 + num2;
+            
+            document.getElementById('captchaQuestion').textContent = `${num1} + ${num2} = ?`;
+            document.getElementById('captchaAnswer').value = '';
+        }
+        
+        // Initialize captcha and animations on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            generateCaptcha();
+            
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all fade-in elements
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Staggered animation for stat cards
+            const statCards = document.querySelectorAll('.stat-card');
+            statCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('animate');
+                }, index * 200);
+            });
+        });
         
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -594,6 +1086,15 @@
             // Hide previous messages
             successMessage.style.display = 'none';
             errorMessage.style.display = 'none';
+            
+            // Check captcha first
+            const userAnswer = parseInt(document.getElementById('captchaAnswer').value);
+            if (userAnswer !== captchaAnswer) {
+                errorMessage.textContent = '❌ Please solve the math problem correctly to verify you\'re human';
+                errorMessage.style.display = 'block';
+                generateCaptcha(); // Generate new captcha
+                return;
+            }
             
             // Show loading state
             submitBtn.disabled = true;
@@ -638,6 +1139,10 @@
                 // But if we reach here without an error, it likely succeeded
                 successMessage.style.display = 'block';
                 this.reset(); // Clear the form
+                generateCaptcha(); // Generate new captcha for next submission
+                
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth' });
                 
             } catch (error) {
                 console.error('Error:', error);
@@ -654,11 +1159,62 @@
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
                 header.style.background = 'rgba(255, 107, 53, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
             } else {
                 header.style.background = 'linear-gradient(135deg, #ff6b35, #f7931e)';
+                header.style.backdropFilter = 'none';
             }
         });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const heroBackground = document.querySelector('.hero-bg');
+            if (heroBackground) {
+                heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add click animation to buttons
+        document.querySelectorAll('.cta-button, .product-cta, .submit-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+                ripple.style.pointerEvents = 'none';
+                ripple.style.animation = 'ripple 0.6s linear';
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
-

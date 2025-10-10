@@ -5,117 +5,829 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wanfex Exports - Fresh Oranges & Quality Turmeric</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
         header {
             background: linear-gradient(135deg, #ff6b35, #f7931e);
-            color: white; padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: all 0.3s ease;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
-        nav { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.8rem; font-weight: bold; }
-        .nav-links { display: flex; list-style: none; gap: 2rem; }
-        .nav-links a {
-            color: white; text-decoration: none; transition: all 0.3s ease; position: relative;
-        }
-        .nav-links a:hover { transform: translateY(-2px); }
-        .nav-links a::after {
-            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: white; transition: width 0.3s ease;
-        }
-        .nav-links a:hover::after { width: 100%; }
 
-        /* Hero Section */
-        .hero { height: 100vh; display: flex; align-items: center; text-align: center; color: white; position: relative; overflow: hidden;}
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            animation: fadeInLeft 1s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            animation: fadeInRight 1s ease;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section with Image Background */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
         .hero-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb');
-            background-size: cover; background-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('https://cdn.pixabay.com/photo/2017/01/20/15/06/oranges-1995056_1280.jpg');
+            background-size: cover;
+            background-position: center;
             animation: slowZoom 20s infinite alternate;
         }
-        @keyframes slowZoom { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
-        .hero-content { position: relative; z-index: 2; }
-        .hero-content h1 { font-size: 3.5rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);}
-        .hero-content p { font-size: 1.3rem; margin-bottom: 2rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); max-width: 800px; margin-left: auto; margin-right: auto; }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.2);
+        }
+
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: slideInDown 1s ease 0.7s both;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .cta-button {
             display: inline-block;
             background: linear-gradient(45deg, #e76f51, #f4a261);
-            color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px;
-            font-weight: bold; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(231, 111, 81, 0.3);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231, 111, 81, 0.3);
+            animation: pulse 2s infinite;
         }
-        .cta-button:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 8px 25px rgba(231, 111, 81, 0.4);}
-        @keyframes pulse { 0%,100%{transform:scale(1);}50%{transform:scale(1.05);} }
 
-        section { padding: 80px 0; }
-        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #2c3e50; }
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(231, 111, 81, 0.4);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 25px;
+            right: 25px;
+            background: #25d366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: bounceIn 1s ease 2s both;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #333;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Loading Spinner */
+        .loading {
+            display: none;
+            margin-left: 10px;
+        }
+
+        .spinner {
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #e76f51;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #27ae60;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            display: none;
+        }
+
+        .error-message {
+            background: #e74c3c;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            display: none;
+        }
+
+        /* Captcha Styles */
+        .captcha-container {
+            background: rgba(255,255,255,0.9);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .captcha-question {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .captcha-input {
+            width: 80px !important;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .captcha-refresh {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .captcha-refresh:hover {
+            background: #2980b9;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        section.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #e76f51, #f4a261);
+            display: block;
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
 
         /* About Section */
-        .about { background: linear-gradient(135deg, #f8f9fa, #e9ecef);}
-        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;}
-        .about-text { font-size: 1.1rem; line-height: 1.8;}
-        .about-stats {display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;}
-        .stat-card { background: white; padding: 2rem; text-align: center; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);}
-        .stat-number { font-size: 2.5rem; font-weight: bold; color: #e76f51; }
+        .about {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
 
-        /* Products */
-        .products { background: white; }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 3rem; margin-top: 3rem;}
-        .product-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1);}
-        .product-image { width: 100%; height: 250px; background-size: cover; background-position: center; display:flex;align-items:center;justify-content:center;font-size:4rem;}
-        .product-card-content { padding: 2rem;}
-        .product-icon { font-size: 3rem; margin-bottom: 1rem; display:block;}
-        .product-card h3 { font-size: 1.8rem; margin-bottom:1rem; color:#2c3e50;}
-        .product-card p { color:#666;margin-bottom:1.5rem;line-height:1.6;}
-        .product-features { list-style:none; margin:1.5rem 0;}
-        .product-features li { padding:0.5rem 0; color:#666;}
-        .product-features li::before { content:"✓"; color:#27ae60; font-weight:bold; margin-right:10px; }
-        .product-cta { display: inline-block; background: linear-gradient(45deg, #e76f51, #f4a261); color: white; padding: 12px 25px; border-radius: 25px; font-weight: bold; margin-top: 1rem; }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .stat-card.animate {
+            transform: translateY(0);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #e76f51;
+            background: linear-gradient(45deg, #e76f51, #f4a261);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Products Section with Images */
+        .products {
+            background: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) rotateY(5deg);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image.oranges {
+            background: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%);
+        }
+        
+        .product-image.oranges::before {
+            content: '🍊';
+            position: absolute;
+            font-size: 120px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.8;
+        }
+        
+        .product-image.turmeric {
+            background: linear-gradient(135deg, #f4a261 0%, #e9c46a 100%);
+        }
+        
+        .product-image.turmeric::before {
+            content: '🌿';
+            position: absolute;
+            font-size: 120px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.8;
+        }
+
+        .product-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(231,111,81,0.8), rgba(244,162,97,0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover .product-image::after {
+            opacity: 1;
+        }
+
+        .product-card-content {
+            padding: 2rem;
+        }
+
+        .product-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .product-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .product-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .product-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .product-features li {
+            padding: 0.5rem 0;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        .product-features li::before {
+            content: "✓";
+            color: #27ae60;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .product-card:hover .product-features li {
+            color: #333;
+        }
+
+        .product-cta {
+            display: inline-block;
+            background: linear-gradient(45deg, #e76f51, #f4a261);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .product-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 111, 81, 0.3);
+        }
 
         /* Gallery Section */
-        .gallery { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:white;text-align:center;}
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;}
-        .gallery-item { border-radius: 15px; overflow: hidden; height: 250px; background-size: cover; background-position: center; position: relative;}
+        .gallery {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item.item1 {
+            background: linear-gradient(135deg, #ff6b35 0%, #f4a261 100%);
+        }
+        
+        .gallery-item.item1::before {
+            content: '🍊';
+            position: absolute;
+            font-size: 80px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .gallery-item.item2 {
+            background: linear-gradient(135deg, #e9c46a 0%, #f4a261 100%);
+        }
+        
+        .gallery-item.item2::before {
+            content: '🌿';
+            position: absolute;
+            font-size: 80px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .gallery-item.item3 {
+            background: linear-gradient(135deg, #2a9d8f 0%, #264653 100%);
+        }
+        
+        .gallery-item.item3::before {
+            content: '📦';
+            position: absolute;
+            font-size: 80px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .gallery-item.item4 {
+            background: linear-gradient(135deg, #e76f51 0%, #d62828 100%);
+        }
+        
+        .gallery-item.item4::before {
+            content: '🚢';
+            position: absolute;
+            font-size: 80px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0,0,0,0.5), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
 
         /* Contact Section */
-        .contact { background: linear-gradient(135deg,#2c3e50,#34495e); color:white;}
-        .contact-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;}
-        .contact-form {background: rgba(255,255,255,0.1);padding:2rem;border-radius:15px;}
-        .form-group { margin-bottom:1.5rem;}
-        .form-group label { display:block;margin-bottom:0.5rem;font-weight:bold;}
+        .contact {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
         .form-group input,
         .form-group textarea,
-        .form-group select { width:100%;padding:15px;border:none;border-radius:10px;font-size:1rem;background:rgba(255,255,255,0.9);}
-        .form-group textarea { height:120px;resize:vertical;}
-        .submit-btn { background: linear-gradient(45deg, #e76f51, #f4a261); color: white; padding: 15px 40px; border: none; border-radius: 50px; cursor: pointer; font-size: 1rem; font-weight: bold; display:flex;align-items:center;justify-content:center;}
-        .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(231, 111, 81, 0.4);}
-        .contact-info { padding-left:2rem;}
-        .contact-item { margin-bottom:2rem; display:flex;align-items:center;gap:1rem;padding:1rem;background:rgba(255,255,255,0.1);border-radius:10px;}
-        .contact-item-icon {font-size:1.5rem;width:40px;height:40px;background:linear-gradient(45deg,#e76f51,#f4a261);border-radius:50%;display:flex;align-items:center;justify-content:center;}
-        .success-message, .error-message { padding:10px;border-radius:5px;font-weight:bold;display:none;margin-bottom:1rem;}
-        .success-message {background:#27ae60;color:white;}
-        .error-message {background:#e74c3c;color:white;}
-        .captcha-container {display:flex;align-items:center;gap:10px;margin-bottom:1rem;}
-        .captcha-question {font-weight:bold;color:#2c3e50;}
-        .captcha-input {width:70px;padding:8px;}
-        .captcha-refresh {background:#3498db;color:white;padding:8px 12px;border:none;border-radius:5px;cursor:pointer;}
-        .captcha-refresh:hover {background:#2980b9;}
-        footer { background:#1a252f;color:white;text-align:center;padding:3rem 0;}
-        .footer-content {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-bottom:2rem;}
-        .footer-section h3 { color:#e76f51;margin-bottom:1rem;}
-        .footer-section a { color:#bdc3c7;text-decoration:none; }
-        .footer-section a:hover { color:#e76f51; }
-        @media(max-width:768px){
-            .nav-links{display:none;}
-            .hero-content h1{font-size:2.5rem;}
-            .about-content,.contact-content{grid-template-columns:1fr;}
-            .products-grid{grid-template-columns:1fr;}
-            .gallery-grid{grid-template-columns:1fr;}
-            .contact-info{padding-left:0;}
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.9);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #e76f51, #f4a261);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(231, 111, 81, 0.4);
+        }
+
+        .submit-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .contact-info {
+            padding-left: 2rem;
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(10px);
+        }
+
+        .contact-item-icon {
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #e76f51, #f4a261);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #e76f51;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #e76f51;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                padding-left: 0;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -134,6 +846,12 @@
         </nav>
     </header>
 
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919970183589?text=Hi%20Wanfex%20Exports!%20I%27m%20interested%20in%20your%20products.%20Can%20you%20provide%20more%20details?" class="whatsapp-float" target="_blank">
+        <span class="whatsapp-tooltip">Chat with us on WhatsApp</span>
+        📱
+    </a>
+
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-bg"></div>
@@ -149,7 +867,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" class="about fade-in">
         <div class="container">
             <h2 class="section-title">About Our Business</h2>
             <div class="about-content">
@@ -162,19 +880,19 @@
                     <p><em>Our mission is simple – to deliver India's authentic taste and quality to the world.</em></p>
                 </div>
                 <div class="about-stats">
-                    <div class="stat-card">
+                    <div class="stat-card fade-in">
                         <div class="stat-number">100+</div>
                         <p>Tons Exported</p>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card fade-in">
                         <div class="stat-number">25+</div>
                         <p>Countries Served</p>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card fade-in">
                         <div class="stat-number">100%</div>
                         <p>Quality Assured</p>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card fade-in">
                         <div class="stat-number">24/7</div>
                         <p>Customer Support</p>
                     </div>
@@ -183,16 +901,15 @@
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section id="products" class="products">
+    <!-- Products Section with Images -->
+    <section id="products" class="products fade-in">
         <div class="container">
             <h2 class="section-title">Our Premium Products</h2>
             <div class="products-grid">
                 <div class="product-card">
-                    <div class="product-image" style="background: linear-gradient(45deg, #ff6b35, #f4a261);">
-                        🍊
-                    </div>
+                    <div class="product-image oranges"></div>
                     <div class="product-card-content">
+                        <span class="product-icon">🍊</span>
                         <h3>Fresh Oranges</h3>
                         <p>Premium quality oranges, handpicked from the finest Nagpur orchards. Rich in Vitamin C and bursting with natural sweetness.</p>
                         <ul class="product-features">
@@ -202,14 +919,13 @@
                             <li>Bulk packaging available</li>
                             <li>Year-round availability</li>
                         </ul>
-                        <span class="product-cta">Get Quote</span>
+                        <a href="https://wa.me/919970183589?text=Hi!%20I%27m%20interested%20in%20Fresh%20Oranges.%20Can%20you%20provide%20pricing%20and%20availability?" class="product-cta" target="_blank">Get Quote on WhatsApp</a>
                     </div>
                 </div>
                 <div class="product-card">
-                    <div class="product-image" style="background: linear-gradient(45deg, #e76f51, #f4a261);">
-                        🌿
-                    </div>
+                    <div class="product-image turmeric"></div>
                     <div class="product-card-content">
+                        <span class="product-icon">🌿</span>
                         <h3>Turmeric & Turmeric Powder (Haldi)</h3>
                         <p>High-curcumin content turmeric and turmeric powder, sourced from organic farms and processed with care.</p>
                         <ul class="product-features">
@@ -219,42 +935,38 @@
                             <li>Custom packaging options</li>
                             <li>Lab-tested purity</li>
                         </ul>
-                        <span class="product-cta">Get Quote</span>
+                        <a href="https://wa.me/919970183589?text=Hi!%20I%27m%20interested%20in%20Turmeric%20products.%20Can%20you%20share%20details%20about%20pricing%20and%20specifications?" class="product-cta" target="_blank">Get Quote on WhatsApp</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section with export container photos -->
-    <section id="gallery" class="gallery">
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery fade-in">
         <div class="container">
-            <h2 class="section-title" style="color:white;">Our Export Containers</h2>
+            <h2 class="section-title" style="color: white;">Our Products Gallery</h2>
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Export Container 1" style="width:100%; height:100%; object-fit:cover;">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308" alt="Export Container 2" style="width:100%; height:100%; object-fit:cover;">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca" alt="Export Container 3" style="width:100%; height:100%; object-fit:cover;">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64" alt="Export Container 4" style="width:100%; height:100%; object-fit:cover;">
-                </div>
+                <div class="gallery-item item1"></div>
+                <div class="gallery-item item2"></div>
+                <div class="gallery-item item3"></div>
+                <div class="gallery-item item4"></div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact fade-in">
         <div class="container">
-            <h2 class="section-title" style="color:white;">Get In Touch</h2>
+            <h2 class="section-title" style="color: white;">Get In Touch</h2>
             <div class="contact-content">
                 <div class="contact-form">
-                    <div class="success-message" id="successMessage"></div>
-                    <div class="error-message" id="errorMessage"></div>
+                    <div class="success-message" id="successMessage">
+                        ✅ Thank you! Your inquiry has been submitted successfully. We'll get back to you within 24 hours.
+                    </div>
+                    <div class="error-message" id="errorMessage">
+                        ❌ Sorry, there was an error submitting your form. Please try again or contact us directly.
+                    </div>
                     <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Full Name *</label>
@@ -295,38 +1007,69 @@
                             <label for="message">Message *</label>
                             <textarea id="message" name="message" placeholder="Please include quantity requirements, destination country, timeline, and any specific requirements..." required></textarea>
                         </div>
+                        
+                        <!-- Simple Captcha -->
                         <div class="captcha-container">
                             <span class="captcha-question" id="captchaQuestion">5 + 3 = ?</span>
                             <input type="number" id="captchaAnswer" class="captcha-input" placeholder="?" required>
                             <button type="button" class="captcha-refresh" onclick="generateCaptcha()">🔄 New</button>
                             <span style="font-size: 0.9rem; color: #666;">Please solve to verify you're human</span>
                         </div>
-                        <button type="submit" class="submit-btn" id="submitBtn">Send Inquiry</button>
+                        
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            Send Inquiry
+                            <div class="loading" id="loading">
+                                <div class="spinner"></div>
+                            </div>
+                        </button>
                     </form>
                 </div>
                 <div class="contact-info">
                     <h3>Contact Information</h3>
                     <div class="contact-item">
                         <div class="contact-item-icon">📧</div>
-                        <div><strong>Email:</strong><br>wanfexexports@gmail.com</div>
+                        <div>
+                            <strong>Email:</strong><br>
+                            wanfexexports@gmail.com
+                        </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-item-icon">📱</div>
-                        <div><strong>Phone:</strong><br>+91-9970183589</div>
+                        <div>
+                            <strong>Phone:</strong><br>
+                            +91-9970183589
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">💬</div>
+                        <div>
+                            <strong>WhatsApp:</strong><br>
+                            <a href="https://wa.me/919970183589" style="color: #25d366; text-decoration: none;">Click to Chat</a>
+                        </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-item-icon">📍</div>
-                        <div><strong>Address:</strong><br>710 United Athashri<br>Pune, Maharashtra - 411047<br>India</div>
+                        <div>
+                            <strong>Address:</strong><br>
+                            710 United Athashri<br>
+                            Pune, Maharashtra - 411047<br>
+                            India
+                        </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-item-icon">🌐</div>
-                        <div><strong>Export Markets:</strong><br>Middle East, Europe, Asia, North America, Australia</div>
+                        <div>
+                            <strong>Export Markets:</strong><br>
+                            Middle East, Europe, Asia,<br>
+                            North America, Australia
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -345,6 +1088,7 @@
                     <p><a href="#about">About Us</a></p>
                     <p><a href="#gallery">Gallery</a></p>
                     <p><a href="#contact">Contact</a></p>
+                    <p><a href="https://wa.me/919970183589">WhatsApp</a></p>
                 </div>
                 <div class="footer-section">
                     <h3>Export Markets</h3>
@@ -355,58 +1099,214 @@
                 </div>
             </div>
             <hr style="border: 1px solid #34495e; margin: 2rem 0;">
-            <p>&copy; 2025 Wanfex Exports. All rights reserved. | Fresh Oranges & Premium Turmeric Worldwide</p>
+            <p>&copy; 2024 Wanfex Exports. All rights reserved. | Fresh Oranges & Premium Turmeric Worldwide</p>
         </div>
     </footer>
+
     <script>
+        // Google Apps Script Web App URL - YOU NEED TO REPLACE THIS WITH YOUR ACTUAL URL
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec';
+        
+        // Captcha variables
         let captchaAnswer = 0;
+        
+        // Generate simple math captcha
         function generateCaptcha() {
             const num1 = Math.floor(Math.random() * 10) + 1;
             const num2 = Math.floor(Math.random() * 10) + 1;
             captchaAnswer = num1 + num2;
+            
             document.getElementById('captchaQuestion').textContent = `${num1} + ${num2} = ?`;
             document.getElementById('captchaAnswer').value = '';
         }
+        
+        // Initialize captcha and animations on page load
         document.addEventListener('DOMContentLoaded', function() {
             generateCaptcha();
+            
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all fade-in elements
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Staggered animation for stat cards
+            const statCards = document.querySelectorAll('.stat-card');
+            statCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('animate');
+                }, index * 200);
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
 
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        // Form submission handler with Google Sheets integration
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            document.getElementById('errorMessage').style.display = 'none';
-            document.getElementById('successMessage').style.display = 'none';
-
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loading');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Hide previous messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Check captcha first
             const userAnswer = parseInt(document.getElementById('captchaAnswer').value);
             if (userAnswer !== captchaAnswer) {
-                document.getElementById('errorMessage').textContent = '❌ Please solve the math problem correctly to verify you\'re human';
-                document.getElementById('errorMessage').style.display = 'block';
-                generateCaptcha();
+                errorMessage.textContent = '❌ Please solve the math problem correctly to verify you\'re human';
+                errorMessage.style.display = 'block';
+                generateCaptcha(); // Generate new captcha
+                return;
+            }
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            loading.style.display = 'inline-block';
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                company: formData.get('company') || 'Not provided',
+                phone: formData.get('phone') || 'Not provided',
+                country: formData.get('country') || 'Not provided',
+                product: formData.get('product'),
+                quantity: formData.get('quantity') || 'Not specified',
+                message: formData.get('message'),
+                timestamp: new Date().toISOString(),
+                source: 'Website Contact Form'
+            };
+            
+            // Basic validation
+            if (!data.name || !data.email || !data.product || !data.message) {
+                errorMessage.textContent = '❌ Please fill in all required fields (marked with *)';
+                errorMessage.style.display = 'block';
+                submitBtn.disabled = false;
+                loading.style.display = 'none';
                 return;
             }
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const company = document.getElementById('company').value;
-            const phone = document.getElementById('phone').value;
-            const country = document.getElementById('country').value;
-            const product = document.getElementById('product').value;
-            const quantity = document.getElementById('quantity').value;
-            const message = document.getElementById('message').value;
-
-            // WhatsApp number
-            const phoneNumber = '919970183589';
-            const whatsappMessage = 
-                `Name: ${name}%0AEmail: ${email}%0ACompany: ${company}%0APhone: ${phone}%0ACountry: ${country}%0AProduct: ${product}%0AQuantity: ${quantity}%0AMessage: ${message}`;
-            const whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
-            window.open(whatsappURL, '_blank');
-
-            document.getElementById('successMessage').textContent = 
-                "✅ Inquiry ready! WhatsApp window opened. We'll get back to you soon.";
-            document.getElementById('successMessage').style.display = 'block';
-            this.reset();
-            generateCaptcha();
+            try {
+                // Send to Google Sheets
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                // Since we're using 'no-cors', we can't read the response
+                // But if we reach here without an error, it likely succeeded
+                successMessage.style.display = 'block';
+                this.reset(); // Clear the form
+                generateCaptcha(); // Generate new captcha for next submission
+                
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+                
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.style.display = 'block';
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                loading.style.display = 'none';
+            }
         });
+
+        // Add header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 107, 53, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #ff6b35, #f7931e)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const heroBackground = document.querySelector('.hero-bg');
+            if (heroBackground) {
+                heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add click animation to buttons
+        document.querySelectorAll('.cta-button, .product-cta, .submit-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+                ripple.style.pointerEvents = 'none';
+                ripple.style.animation = 'ripple 0.6s linear';
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
-

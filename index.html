@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wanfex Exports - Premium Indian Agricultural Exports</title>
-    <meta name="description" content="Premium quality agricultural exports from India - Fresh Nagpur Oranges, Turmeric, and Turmeric Powder sourced directly from farms">
+    <meta name="description" content="Premium quality agricultural exports from India - Fresh Nagpur Oranges, Bananas, Moringa, Turmeric sourced directly from farms">
     <style>
         * {
             margin: 0;
@@ -19,7 +19,7 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #2c5f2d 0%, #97bc62 100%);
+            background: linear-gradient(135deg, #1a3d5c 0%, #2b5a7a 100%);
             color: white;
             padding: 1rem 0;
             position: sticky;
@@ -38,22 +38,17 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
         }
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
+        .logo-image {
+            height: 50px;
+            width: auto;
             background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
         }
 
         .nav-links {
@@ -74,7 +69,7 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, #2c5f2d 0%, #97bc62 100%);
+            background: linear-gradient(135deg, #1a3d5c 0%, #2b5a7a 100%);
             color: white;
             padding: 6rem 2rem;
             text-align: center;
@@ -103,6 +98,7 @@
             justify-content: center;
             gap: 1.5rem;
             font-size: 1.1rem;
+            margin-bottom: 2rem;
         }
 
         .marquee-container {
@@ -116,7 +112,7 @@
         .marquee-content {
             display: flex;
             gap: 3rem;
-            animation: scroll 20s linear infinite;
+            animation: scroll 25s linear infinite;
             white-space: nowrap;
         }
 
@@ -128,7 +124,7 @@
         .cta-button {
             display: inline-block;
             background: white;
-            color: #2c5f2d;
+            color: #1a3d5c;
             padding: 1rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
@@ -165,7 +161,7 @@
         .stat-number {
             font-size: 2.5rem;
             font-weight: bold;
-            color: #2c5f2d;
+            color: #1a3d5c;
             margin-bottom: 0.5rem;
         }
 
@@ -183,7 +179,7 @@
         .section-title {
             text-align: center;
             font-size: 2.5rem;
-            color: #2c5f2d;
+            color: #1a3d5c;
             margin-bottom: 1rem;
         }
 
@@ -222,7 +218,7 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
@@ -251,7 +247,7 @@
 
         .product-title {
             font-size: 1.5rem;
-            color: #2c5f2d;
+            color: #1a3d5c;
             margin-bottom: 1rem;
         }
 
@@ -285,7 +281,7 @@
 
         .feature-title {
             font-size: 1.3rem;
-            color: #2c5f2d;
+            color: #1a3d5c;
             margin-bottom: 1rem;
         }
 
@@ -324,7 +320,7 @@
         }
 
         .contact {
-            background: linear-gradient(135deg, #2c5f2d 0%, #97bc62 100%);
+            background: linear-gradient(135deg, #1a3d5c 0%, #2b5a7a 100%);
             color: white;
         }
 
@@ -395,7 +391,7 @@
 
         .submit-button {
             background: white;
-            color: #2c5f2d;
+            color: #1a3d5c;
             padding: 1rem 2.5rem;
             border: none;
             border-radius: 50px;
@@ -409,7 +405,6 @@
             transform: translateY(-2px);
         }
 
-        /* Success Popup Styles */
         .popup-overlay {
             display: none;
             position: fixed;
@@ -454,7 +449,7 @@
 
         .popup-title {
             font-size: 2rem;
-            color: #2c5f2d;
+            color: #1a3d5c;
             margin-bottom: 1rem;
         }
 
@@ -465,7 +460,7 @@
         }
 
         .popup-button {
-            background: #2c5f2d;
+            background: #1a3d5c;
             color: white;
             padding: 1rem 2.5rem;
             border: none;
@@ -481,7 +476,7 @@
         }
 
         .footer {
-            background: #1a3a1b;
+            background: #0f2438;
             color: white;
             padding: 2rem;
             text-align: center;
@@ -500,6 +495,10 @@
             .nav-links {
                 display: none;
             }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -507,8 +506,7 @@
     <header class="header">
         <nav class="nav-container">
             <div class="logo">
-                <div class="logo-icon">🌾</div>
-                <span>WANFEX EXPORTS</span>
+                <img src="wanfex-logo.png" alt="Wanfex Exports" class="logo-image">
             </div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
@@ -523,35 +521,35 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Your trusted partner for premium quality agricultural exports from India to the world</h1>
-            <p class="hero-subtitle">Premium Quality Agricultural Products</p>
+            <p class="hero-subtitle">From Local Roots to Global Routes</p>
             <div class="hero-products">
                 <span>🍊 Fresh Nagpur Oranges</span>
                 <span>•</span>
                 <span>🍌 Premium Bananas</span>
                 <span>•</span>
-                <span>🌿 Premium Turmeric</span>
+                <span>🌿 Premium Moringa</span>
                 <span>•</span>
-                <span>✨ Quality Turmeric Powder</span>
+                <span>🌱 Premium Turmeric</span>
             </div>
             <a href="#contact" class="cta-button">Get a Quote</a>
             
             <div class="marquee-container">
                 <div class="marquee-content">
-                    <span>🍊 Fresh Nagpur Oranges</span>
+                    <span>🍊 Nagpur Oranges</span>
                     <span>•</span>
                     <span>🍌 Premium Bananas</span>
                     <span>•</span>
-                    <span>🌿 Premium Turmeric</span>
+                    <span>🌿 Moringa Products</span>
                     <span>•</span>
-                    <span>✨ Quality Turmeric Powder</span>
+                    <span>🌱 Turmeric & Powder</span>
                     <span>•</span>
-                    <span>🍊 Fresh Nagpur Oranges</span>
+                    <span>🍊 Nagpur Oranges</span>
                     <span>•</span>
                     <span>🍌 Premium Bananas</span>
                     <span>•</span>
-                    <span>🌿 Premium Turmeric</span>
+                    <span>🌿 Moringa Products</span>
                     <span>•</span>
-                    <span>✨ Quality Turmeric Powder</span>
+                    <span>🌱 Turmeric & Powder</span>
                 </div>
             </div>
         </div>
@@ -582,7 +580,7 @@
         <div class="about-content">
             <div class="about-text">
                 <p>Founded with a vision to showcase India's agricultural excellence, Wanfex Exports is a growing name in the fresh fruits and spices export industry. Our focus is on quality, transparency, and reliability.</p>
-                <p>We specialize in delivering farm-fresh Nagpur Oranges, Premium Bananas, high-quality Turmeric, and premium Turmeric Powder to global markets. Sourced directly from India's fertile farms, our products are 100% natural, hygienically processed, and packed to international export standards.</p>
+                <p>We specialize in delivering farm-fresh Nagpur Oranges, Premium Bananas, Moringa products, high-quality Turmeric, and premium Turmeric Powder to global markets. Sourced directly from India's fertile farms, our products are 100% natural, hygienically processed, and packed to international export standards.</p>
             </div>
             <img src="oranges-tree.jpg" alt="Farm Fresh Products" class="about-image">
         </div>
@@ -607,9 +605,16 @@
                 </div>
             </div>
             <div class="product-card">
+                <img src="moringa.jpg" alt="Premium Moringa" class="product-image">
+                <div class="product-content">
+                    <h3 class="product-title">🌿 Premium Moringa</h3>
+                    <p class="product-description">Nutrient-rich moringa leaves and powder, known as the "miracle tree." Packed with vitamins, minerals, and antioxidants for health and wellness.</p>
+                </div>
+            </div>
+            <div class="product-card">
                 <img src="turmeric-roots.jpg" alt="Turmeric Root" class="product-image">
                 <div class="product-content">
-                    <h3 class="product-title">🌿 Premium Turmeric</h3>
+                    <h3 class="product-title">🌱 Premium Turmeric</h3>
                     <p class="product-description">High-curcumin content turmeric roots and powder, sourced from organic farms. Perfect for culinary, medicinal, and cosmetic applications.</p>
                 </div>
             </div>
@@ -671,6 +676,9 @@
                 <img src="banana-1.jpg" alt="Premium Bananas" class="gallery-image">
             </div>
             <div class="gallery-item">
+                <img src="moringa.jpg" alt="Moringa Products" class="gallery-image">
+            </div>
+            <div class="gallery-item">
                 <img src="turmeric-roots.jpg" alt="Turmeric Roots" class="gallery-image">
             </div>
             <div class="gallery-item">
@@ -678,9 +686,6 @@
             </div>
             <div class="gallery-item">
                 <img src="banana-2.jpg" alt="Fresh Banana Harvest" class="gallery-image">
-            </div>
-            <div class="gallery-item">
-                <img src="banana-3.jpg" alt="Quality Bananas" class="gallery-image">
             </div>
         </div>
     </section>
@@ -704,7 +709,7 @@
                     <span class="contact-icon">📧</span>
                     <div>
                         <strong>Email:</strong><br>
-                        sales@wanfexexports.com
+                        wanfexexports@gmail.com
                     </div>
                 </div>
                 <div class="contact-item">
@@ -751,6 +756,7 @@
                             <option value="">Select Product</option>
                             <option value="Nagpur Oranges">Nagpur Oranges</option>
                             <option value="Premium Bananas">Premium Bananas</option>
+                            <option value="Premium Moringa">Premium Moringa</option>
                             <option value="Premium Turmeric Roots">Premium Turmeric Roots</option>
                             <option value="Turmeric Powder">Turmeric Powder</option>
                             <option value="Other">Other</option>
@@ -774,7 +780,6 @@
         <p>&copy; 2024 Wanfex Exports. All rights reserved. | Premium Indian Agricultural Exports</p>
     </footer>
 
-    <!-- Success Popup -->
     <div class="popup-overlay" id="successPopup">
         <div class="popup-content">
             <div class="popup-icon">✅</div>
@@ -794,7 +799,6 @@
             const formData = new FormData(form);
             const submitButton = form.querySelector('button[type="submit"]');
             
-            // Disable button and show loading
             submitButton.disabled = true;
             submitButton.textContent = 'Sending...';
             
@@ -807,9 +811,7 @@
                 const data = await response.json();
                 
                 if (data.success) {
-                    // Show success popup
                     popup.classList.add('active');
-                    // Reset form
                     form.reset();
                 } else {
                     alert('Something went wrong. Please try again.');
@@ -817,7 +819,6 @@
             } catch (error) {
                 alert('Error sending message. Please try again.');
             } finally {
-                // Re-enable button
                 submitButton.disabled = false;
                 submitButton.textContent = 'Send Message';
             }
@@ -827,7 +828,6 @@
             popup.classList.remove('active');
         }
 
-        // Close popup when clicking outside
         popup.addEventListener('click', function(e) {
             if (e.target === popup) {
                 closePopup();
@@ -836,4 +836,3 @@
     </script>
 </body>
 </html>
-

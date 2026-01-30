@@ -3,8 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wanfex Exports - Premium Indian Agricultural Exports</title>
-    <meta name="description" content="Premium quality agricultural exports from India - Fresh Nagpur Oranges, Bananas, Moringa, Turmeric sourced directly from farms">
+    <title>Wanfex Exports | Premium Indian Agricultural Exports - Nagpur Oranges, Bananas, Moringa, Turmeric</title>
+    <meta name="description" content="Wanfex Exports is a premier Indian exporter based in Pune, specializing in Nagpur Oranges, G-9 Bananas, Moringa, and high-quality Turmeric for global markets.">
+    <meta name="keywords" content="Wanfex Exports, Nagpur Orange Exporters, Indian Banana Export, Moringa Suppliers, Turmeric Suppliers Pune, Agricultural Exports India, G-9 Bananas, Indian Agricultural Products">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Wanfex Exports",
+      "url": "https://wanfexexports.com/",
+      "logo": "https://wanfexexports.com/wanfex-logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-9403413918",
+        "contactType": "customer service",
+        "areaServed": "Worldwide",
+        "availableLanguage": ["en", "Hindi"]
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "SR NO-298/2/1C Lohegaon",
+        "addressLocality": "Pune",
+        "addressRegion": "Maharashtra",
+        "postalCode": "411047",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.facebook.com/wanfexexports",
+        "https://www.linkedin.com/company/wanfexexports"
+      ]
+    }
+    </script>
     <style>
         * {
             margin: 0;
@@ -21,20 +52,20 @@
         .header {
             background: linear-gradient(135deg, #1a3d5c 0%, #2b5a7a 100%);
             color: white;
-            padding: 1rem 0;
+            padding: 0.8rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            padding: 0 3rem;
         }
 
         .logo {
@@ -44,46 +75,74 @@
         }
 
         .logo-image {
-            height: 50px;
+            height: 45px;
             width: auto;
             background: white;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
+            padding: 0.6rem 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-image:hover {
+            transform: scale(1.05);
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
             color: white;
             text-decoration: none;
-            transition: opacity 0.3s;
+            transition: all 0.3s ease;
             font-weight: 500;
+            font-size: 1.05rem;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
         }
 
         .nav-links a:hover {
-            opacity: 0.8;
+            border-bottom: 2px solid white;
+            opacity: 1;
         }
 
         .hero {
             background: linear-gradient(135deg, #1a3d5c 0%, #2b5a7a 100%);
             color: white;
-            padding: 6rem 2rem;
+            padding: 7rem 2rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.05)"/></svg>');
+            opacity: 0.3;
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
             line-height: 1.2;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .hero-subtitle {
@@ -125,18 +184,20 @@
             display: inline-block;
             background: white;
             color: #1a3d5c;
-            padding: 1rem 2.5rem;
+            padding: 1.2rem 3rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             font-size: 1.1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            margin-top: 1rem;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: #f0f0f0;
         }
 
         .stats {
@@ -152,10 +213,16 @@
 
         .stat-card {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
             text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.18);
         }
 
         .stat-number {
@@ -499,6 +566,19 @@
             .product-grid {
                 grid-template-columns: 1fr;
             }
+
+            .logo-image {
+                height: 35px;
+                padding: 0.5rem 1rem;
+            }
+
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+
+            .hero {
+                padding: 4rem 1.5rem;
+            }
         }
     </style>
 </head>
@@ -525,7 +605,7 @@
             <div class="hero-products">
                 <span>🍊 Fresh Nagpur Oranges</span>
                 <span>•</span>
-                <span>🍌 Premium Bananas</span>
+                <span>🍌 Premium G-9 Bananas</span>
                 <span>•</span>
                 <span>🌿 Premium Moringa</span>
                 <span>•</span>
@@ -537,7 +617,7 @@
                 <div class="marquee-content">
                     <span>🍊 Nagpur Oranges</span>
                     <span>•</span>
-                    <span>🍌 Premium Bananas</span>
+                    <span>🍌 Premium G-9 Bananas</span>
                     <span>•</span>
                     <span>🌿 Moringa Products</span>
                     <span>•</span>
@@ -545,7 +625,7 @@
                     <span>•</span>
                     <span>🍊 Nagpur Oranges</span>
                     <span>•</span>
-                    <span>🍌 Premium Bananas</span>
+                    <span>🍌 Premium G-9 Bananas</span>
                     <span>•</span>
                     <span>🌿 Moringa Products</span>
                     <span>•</span>
@@ -576,11 +656,34 @@
 
     <section id="about" class="section">
         <h2 class="section-title">About Wanfex Exports</h2>
-        <p class="section-subtitle">Excellence in Agricultural Exports Since Inception</p>
+        <p class="section-subtitle">Connecting the finest Indian harvests to the global market</p>
         <div class="about-content">
             <div class="about-text">
-                <p>Founded with a vision to showcase India's agricultural excellence, Wanfex Exports is a growing name in the fresh fruits and spices export industry. Our focus is on quality, transparency, and reliability.</p>
-                <p>We specialize in delivering farm-fresh Nagpur Oranges, Premium Bananas, Moringa products, high-quality Turmeric, and premium Turmeric Powder to global markets. Sourced directly from India's fertile farms, our products are 100% natural, hygienically processed, and packed to international export standards.</p>
+                <h3 style="color: #1a3d5c; font-size: 1.8rem; margin-bottom: 1rem;">Excellence in Agricultural Exports</h3>
+                <p>Based in the vibrant hub of <strong>Pune, Maharashtra</strong>, Wanfex Exports has established itself as a trusted name in the international agricultural trade. We specialize in sourcing and delivering premium-grade Indian produce, ensuring that the freshness of our fields reaches your doorstep, anywhere in the world.</p>
+                
+                <h3 style="color: #1a3d5c; font-size: 1.6rem; margin-top: 2rem; margin-bottom: 1rem;">Our Core Expertise</h3>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #1a3d5c; font-weight: bold;">🍊</span>
+                        <strong>Nagpur Oranges:</strong> Famous for their sweet-sour flavor and juicy pulp, handpicked from premium orchards.
+                    </li>
+                    <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #1a3d5c; font-weight: bold;">🍌</span>
+                        <strong>G-9 Bananas:</strong> Export-quality Cavendish bananas grown under strict quality controls.
+                    </li>
+                    <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #1a3d5c; font-weight: bold;">🌿</span>
+                        <strong>Moringa:</strong> Nutrient-rich "miracle tree" products packed with vitamins and antioxidants.
+                    </li>
+                    <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #1a3d5c; font-weight: bold;">🌱</span>
+                        <strong>Turmeric:</strong> High-curcumin content turmeric sourced directly from the best farms in India.
+                    </li>
+                </ul>
+                
+                <h3 style="color: #1a3d5c; font-size: 1.6rem; margin-top: 2rem; margin-bottom: 1rem;">Our Commitment to Quality</h3>
+                <p>At Wanfex Exports, quality is not just a standard; it's our promise. We adhere to international food safety norms and packaging standards to ensure our clients receive only the best. Our strategic location in Pune allows us to manage logistics efficiently, providing timely deliveries to global ports.</p>
             </div>
             <img src="oranges-tree.jpg" alt="Farm Fresh Products" class="about-image">
         </div>
@@ -598,10 +701,10 @@
                 </div>
             </div>
             <div class="product-card">
-                <img src="banana-1.jpg" alt="Premium Bananas" class="product-image">
+                <img src="banana-1.jpg" alt="Premium G-9 Bananas" class="product-image">
                 <div class="product-content">
-                    <h3 class="product-title">🍌 Premium Bananas</h3>
-                    <p class="product-description">Fresh, high-quality bananas sourced from the best farms. Perfectly ripened, nutritious, and ideal for export to global markets.</p>
+                    <h3 class="product-title">🍌 Premium G-9 Bananas</h3>
+                    <p class="product-description">Export-quality Cavendish G-9 bananas grown under strict quality controls. Perfectly ripened, nutritious, and ideal for global markets.</p>
                 </div>
             </div>
             <div class="product-card">
@@ -755,7 +858,7 @@
                         <select name="product">
                             <option value="">Select Product</option>
                             <option value="Nagpur Oranges">Nagpur Oranges</option>
-                            <option value="Premium Bananas">Premium Bananas</option>
+                            <option value="Premium G-9 Bananas">Premium G-9 Bananas</option>
                             <option value="Premium Moringa">Premium Moringa</option>
                             <option value="Premium Turmeric Roots">Premium Turmeric Roots</option>
                             <option value="Turmeric Powder">Turmeric Powder</option>
